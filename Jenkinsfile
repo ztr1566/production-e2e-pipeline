@@ -1,14 +1,14 @@
 pipeline {
     agent {
-        label 'ubuntu-agent'
+        label any
     }
     tools {
-        jdk 'Java-21'
-        maven 'Maven-4'
+        jdk 'Java-17'
+        maven 'Maven-3'
     }
     environment {
         APP_NAME = 'production-e2e-pipeline'
-        RELEASE_VERSION = '1.0.0'
+        RELEASE_VERSION = '1.0'
         DOCKER_USER = 'zizoo1566'
         DOCKER_PASSWORD = credentials('docker-credentials')
         IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
