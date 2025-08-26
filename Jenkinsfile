@@ -64,10 +64,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(
-                        credentialsId: 'docker-credentials',
-                        url: 'https://hub.docker.com/repositories/zizoo1566'
-                    ) {
+                    withDockerRegistry('', credentialsId: 'docker-credentials') {
                         sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
                         sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
                     }
