@@ -66,8 +66,8 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker-credentials') {
                         sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
-                        sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-                        sh 'docker push ${IMAGE_NAME}:latest'
+                        sh 'docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest'
+                        sh 'docker push --all ${IMAGE_NAME}'
                     }
                 }
             }
