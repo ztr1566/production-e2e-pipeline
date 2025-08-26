@@ -64,7 +64,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    withDockerRegistry('', credentialsId: 'docker-credentials') {
+                    withDockerRegistry(credentialsId: 'docker-credentials') {
                         sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
                         sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
                     }
